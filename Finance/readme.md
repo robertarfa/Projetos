@@ -34,4 +34,4 @@
   ![alt text](image-8.png)
 
 - Dashboard PowerBi
-  <video controls src="PowerBi-2.mp4" title="Title"></video>
+  ![alt text](image-7.png)
