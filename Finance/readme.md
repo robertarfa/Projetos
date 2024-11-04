@@ -32,3 +32,6 @@
 
 - Ajustar casa decimal
   ![alt text](image-8.png)
+
+- Dashboard PowerBi
+  <video controls src="PowerBi-1.mp4" title="Title"></video>
