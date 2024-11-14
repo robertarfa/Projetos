@@ -24,15 +24,15 @@
 
     3.4 Abrir o cmd do Ubuntu
 
-    3.5 Digitar ssh -i /home/robs/chave_instancia.pem ec2-user@{DNS IPv4 público} , como não tem nenhum user configurado, esse é o padrão
+    3.5 Digitar ssh -i /home/{user}/chave_instancia.pem ec2-user@{DNS IPv4 público} , como não tem nenhum user configurado, esse é o padrão
 
     3.6 Se for negado, precisa associar o par de chaves a uma instância no AWS
 
     ![alt text](image-2.png)
 
-    3.7 Mudar o acesso do arquivo: chmod 600 /home/robs/chave_instancia.pem
+    3.7 Mudar o acesso do arquivo: chmod 600 /home/{user}/chave_instancia.pem
 
-    3.8 Coletar a chave pública do pc: ssh-keygen -y -f /home/robs/chave_instancia.pem
+    3.8 Coletar a chave pública do pc: ssh-keygen -y -f /home/{user}/chave_instancia.pem
 
     3.9 Copiar a chave e armazenar no EC2 connect (Conectar na instância)
 
@@ -41,3 +41,27 @@
     3.11 Adicionar a chave nesse arquivo de texto
 
     3.12 Tentar novamente fazer o acesso via ssh no Ubuntu ssh -i /home/{user}/chave_instancia.pem ec2-user@{DNS IPv4 público}
+
+### <b>4. Atualizar o ambiente cloud - Ubuntu</b>
+
+    4.1 sudo apt update -y
+    4.2 sudo apt upgrade -y
+    4.3 sudo apt install apache2 -y (https://ubuntu.com/server/docs/how-to-install-apache2)
+    4.4 Habilitar o servidor sudo systemctl start apache2
+    4.5 Verificar status sudo systemctl status 'apache2'
+    4.6 Habilitar sudo systemctl enable apache2
+    4.7 Conexão ainda foi recusada
+    4.8 curl 'https://ec2-54-242-159-97.compute-1.amazonaws.com/' 'link de acesso de instancia no navegador'
+    4.9 Além da porta 443 habilitar também a 80
+    ![alt text](image-3.png)
+    4.10 Instalar o modulo ssl => sudo install mod_ssl (no ubuntu já está ok)
+    4.11 Verificar configuração sudo nano /etc/apache2/apache2.conf
+    4.12 sudo a2enmod ssl caso seja necessario habilitar o ssl
+    4.13 reiniciar apache sudo systemctl restart apache2
+    4.14 listar todas as conexões sudo netstat -tulnp | grep 443 (instalar sudo apt install net-tools)
+    4.13 Vai dar erro no https pq precisa de um certicado assinado, mas vai funcionar no http
+    4.14 Criar um site para teste
+    4.15 cd / => cd /var/www/html
+    4.16 sudo nano index2.html
+    4.17 Dar permissão para o html sudo chmod 644 index2.html
+    4.18 Reinciar Apache
