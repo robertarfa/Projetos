@@ -40,4 +40,4 @@
 
     3.11 Adicionar a chave nesse arquivo de texto
 
-    3.12 Tentar novamente fazer o acesso via ssh no Ubuntu ssh -i /home/robs/chave_instancia.pem ec2-user@{DNS IPv4 público}
+    3.12 Tentar novamente fazer o acesso via ssh no Ubuntu ssh -i /home/{user}/chave_instancia.pem ec2-user@{DNS IPv4 público}
