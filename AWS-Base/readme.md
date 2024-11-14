@@ -46,22 +46,25 @@
 
     4.1 sudo apt update -y
     4.2 sudo apt upgrade -y
-    4.3 sudo apt install apache2 -y (https://ubuntu.com/server/docs/how-to-install-apache2)
-    4.4 Habilitar o servidor sudo systemctl start apache2
-    4.5 Verificar status sudo systemctl status 'apache2'
-    4.6 Habilitar sudo systemctl enable apache2
-    4.7 Conexão ainda foi recusada
-    4.8 curl 'https://ec2-54-242-159-97.compute-1.amazonaws.com/' 'link de acesso de instancia no navegador'
-    4.9 Além da porta 443 habilitar também a 80
+
+### <b>5. Instalar Apache e configurar primeiro site - Ubuntu</b>
+
+    5.3 sudo apt install apache2 -y (https://ubuntu.com/server/docs/how-to-install-apache2)
+    5.4 Habilitar o servidor sudo systemctl start apache2
+    5.5 Verificar status sudo systemctl status 'apache2'
+    5.6 Habilitar sudo systemctl enable apache2
+    5.7 Conexão ainda foi recusada
+    5.8 curl 'https://ec2-54-242-159-97.compute-1.amazonaws.com/' 'link de acesso de instancia no navegador'
+    5.9 Além da porta 443 habilitar também a 80
     ![alt text](image-3.png)
-    4.10 Instalar o modulo ssl => sudo install mod_ssl (no ubuntu já está ok)
-    4.11 Verificar configuração sudo nano /etc/apache2/apache2.conf
-    4.12 sudo a2enmod ssl caso seja necessario habilitar o ssl
-    4.13 reiniciar apache sudo systemctl restart apache2
-    4.14 listar todas as conexões sudo netstat -tulnp | grep 443 (instalar sudo apt install net-tools)
-    4.13 Vai dar erro no https pq precisa de um certicado assinado, mas vai funcionar no http
-    4.14 Criar um site para teste
-    4.15 cd / => cd /var/www/html
-    4.16 sudo nano index2.html
-    4.17 Dar permissão para o html sudo chmod 644 index2.html
-    4.18 Reinciar Apache
+    5.10 Instalar o modulo ssl => sudo install mod_ssl (no ubuntu já está ok)
+    5.11 Verificar configuração sudo nano /etc/apache2/apache2.conf
+    5.12 sudo a2enmod ssl caso seja necessario habilitar o ssl
+    5.13 reiniciar apache sudo systemctl restart apache2
+    5.14 listar todas as conexões sudo netstat -tulnp | grep 443 (instalar sudo apt install net-tools)
+    5.13 Vai dar erro no https pq precisa de um certicado assinado, mas vai funcionar no http
+    5.14 Criar um site para teste
+    5.15 cd / => cd /var/www/html
+    5.16 sudo nano index2.html
+    5.17 Dar permissão para o html sudo chmod 644 index2.html
+    5.18 Reinciar Apache
