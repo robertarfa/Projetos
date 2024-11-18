@@ -1,4 +1,4 @@
-# Configuração AWS
+# Configuração AWS - EC@
 
 ### <b>1. Criar conta na AWS</b>
 
@@ -68,3 +68,25 @@
     5.16 sudo nano index2.html
     5.17 Dar permissão para o html sudo chmod 644 index2.html
     5.18 Reinciar Apache
+
+### <b>6. Instalar CLI AWS</b>
+
+    6.1 Open a WSL terminal.
+    6.2 Download the installation script: Use curl or wget to download the installation script. Curl is generally preferred:
+        curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    6.3 Unzip the file:
+        unzip awscliv2.zip (sudo apt install unzip)
+    6.4 Install the CLI (Entrar na pasta com o arquivo install):
+        sudo ./install
+    6.5 Verify the installation: After the installation completes, check if it's working correctly:
+        aws --version
+    6.6 aws configure
+    6.7 Criar a chave de acesso na AWS (IAM => USuários => Credenciais de segurança => Criar Chaves de acesso => Command Line Interface (CLI))
+    6.8 Output como json
+    6.9 aws ec2 describe-instances
+    6.10 reboot => aws ec2 reboot-instances --instance-ids id-da-instancia
+
+### <b>7. Instalar AWS SDK</b>
+
+    7.1 VPC => isolar e proteger os módulos da nossa solução, controlar o tráfico da rede
+    7.2 CloudWatch - guia de monitoramento
