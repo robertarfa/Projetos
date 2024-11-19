@@ -29,15 +29,15 @@ dfs = {}
 import pandas as pd
 
 for arquivo in arquivos:
-  ano = arquivo.split("_")[-1]
+  ano = arquivo.split("_")[-1].split(".")[0]
   print(ano)
-  ano2  = ano.split(".")[0]
-  print(ano2)
+  # ano2  = ano.split(".")[0]
+  # print(ano2)
 
-  dfs[ano2] = pd.read_csv(arquivo)
+  dfs[ano] = pd.read_csv(arquivo)
 
-  #Verificar se os arquivos estão corretos
-  dfs['2018'].head()
+#   #Verificar se os arquivos estão corretos
+dfs['2019'].head()
 
 import boto3
 import os
@@ -64,10 +64,39 @@ boto3.setup_default_session(
 s3 = boto3.client("s3")
 
 #arquivo teste
-content = """Olá, S3"""
+# content = """Olá, S3"""
 
-with open("hello-s3.txt", 'w+') as file:
-  file.write(content)
+# with open("hello-s3.txt", 'w+') as file:
+#   file.write(content)
 
 #subir arquivo para aws
 s3.upload_file("hello-s3.txt", "robsdatalakeaws", "bronze/hello-s3.txt")
+
+#Salvar arquivo em Parquet
+
+from io import BytesIO
+
+for ano, df in dfs.items():
+    try:
+        parquet_buffer = BytesIO()  # Create BytesIO object inside the loop
+        df.to_parquet(parquet_buffer, engine='pyarrow') # Specify engine for better performance
+
+        parquet_buffer.seek(0) # Important: Reset buffer position to the beginning
+
+        s3.put_object(
+            Bucket="robsdatalakeaws",
+            Key=f"bronze/dados_{ano}.parquet",
+            Body=parquet_buffer.getvalue(),
+            # Add ContentType for better metadata management
+            ContentType='application/octet-stream'
+        )
+        print(f"Uploaded dados_{ano}.parquet successfully.")
+
+    except Exception as e:
+        print(f"Error uploading dados_{ano}.parquet: {e}")
+        # Consider adding retry logic here if needed
+
+response = s3.list_objects(Bucket="robsdatalakeaws")
+
+keys = [obj["Key"] for obj in response ["Contents"]]
+print(keys)
