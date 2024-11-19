@@ -32,7 +32,7 @@
     4. Seguir Pipeline_AWS.py
       4.1 pip install boto3
 
-### Lake Formation - Centralização dos dados
+### Conectar com o bucket S3 via Python
 
     5. Conectar ao bucket S3 via Python
       5.1 Configurar o IAM
@@ -42,3 +42,34 @@
           5.2.2.1 Código local
 
 ### Security Layer com IAM - utilizar um usuário que não seja root
+
+### Melhorar a performance com Parquet
+
+### Lake Formation - Centralização dos dados
+
+      6. Configurar os usuários que poderão acessar e criar banco de dados
+        6.1 Procurar por Lake Formation
+        6.2 Data lake administrators
+        6.3 Adicionar usuário IAM users and roles
+        6.4 Data lake administrators selecionar o seu usuário
+        6.5 Database creators Selecionar a opção com Create Database
+        6.6 Clicar em Grant
+
+        6.7 No menu selecionar Data lake locations
+        6.8 Register location
+        6.9 Colocar onde estão os dados
+        6.10 Register location
+
+### Ajustar permissões do Lake Formation para o Data Location
+
+        7. No menu selecionar Data Locations
+        7.1 Grant
+        7.2 Escolher usuário
+        7.3 Storage locations
+        7.4 Grant
+
+### Criar um banco de dados dentro do Lake Formation
+
+        8. No Lake Formation
+        8.1 No menu selecionar Databases
+        8.2 Create Database
