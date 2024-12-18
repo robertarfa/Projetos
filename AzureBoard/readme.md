@@ -29,3 +29,9 @@ Filtros utilizados:
 - TestsCase = FILTER('Visão Geral', 'Visão Geral'[Work Item Type] = "Test Case")
 
 ![alt text](image-2.png)
+
+## Dashboard
+
+- Os dados são privados, por esse motivo irei postar a imagem desfocada.
+
+![alt text](<Captura de tela 2024-12-18 141007-1.png>)
