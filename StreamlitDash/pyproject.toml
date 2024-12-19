@@ -2,7 +2,7 @@
 name = "streamlitdash"
 version = "0.1.0"
 description = ""
-authors = ["Roberta Ferreira Aguilar <roberta.aguilar@kobel.com.br>"]
+authors = ["Roberta Ferreira Aguilar"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
